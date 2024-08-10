@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		380F11B62C667C710027A33E /* ButcherCarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F11B52C667C710027A33E /* ButcherCarouselItem.swift */; };
+		380F11B82C667C890027A33E /* HughieCarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F11B72C667C890027A33E /* HughieCarouselItem.swift */; };
+		380F11BA2C667CA10027A33E /* FrenchieCarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F11B92C667CA10027A33E /* FrenchieCarouselItem.swift */; };
+		380F11BC2C667CB50027A33E /* MMCarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F11BB2C667CB50027A33E /* MMCarouselItem.swift */; };
+		38BD52082C67574A00BDD85B /* IntermediateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BD52072C67574A00BDD85B /* IntermediateViewController.swift */; };
 		5E1E353D2C623996000D7DEF /* UIViewController+AddChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1E353C2C623996000D7DEF /* UIViewController+AddChild.swift */; };
 		5E1E353F2C6247C5000D7DEF /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1E353E2C6247C5000D7DEF /* ImageViewController.swift */; };
 		5E1E35422C6248A6000D7DEF /* CarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1E35412C6248A6000D7DEF /* CarouselItem.swift */; };
@@ -16,6 +21,7 @@
 		5E1E354A2C624BAB000D7DEF /* ATrainCarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1E35492C624BAB000D7DEF /* ATrainCarouselItem.swift */; };
 		5E1E354F2C624C2A000D7DEF /* CarouselItemDataSourceProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1E354E2C624C2A000D7DEF /* CarouselItemDataSourceProviderType.swift */; };
 		5E1E35512C624C4D000D7DEF /* CarouselItemDataSourceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1E35502C624C4D000D7DEF /* CarouselItemDataSourceProvider.swift */; };
+		5E1E35572C634D75000D7DEF /* SegmentedProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1E35562C634D75000D7DEF /* SegmentedProgressBar.swift */; };
 		5E87DC6E2C6232430005D86C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87DC6D2C6232430005D86C /* AppDelegate.swift */; };
 		5E87DC702C6232430005D86C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87DC6F2C6232430005D86C /* SceneDelegate.swift */; };
 		5E87DC722C6232430005D86C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87DC712C6232430005D86C /* MainViewController.swift */; };
@@ -47,6 +53,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		380F11B52C667C710027A33E /* ButcherCarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButcherCarouselItem.swift; sourceTree = "<group>"; };
+		380F11B72C667C890027A33E /* HughieCarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HughieCarouselItem.swift; sourceTree = "<group>"; };
+		380F11B92C667CA10027A33E /* FrenchieCarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrenchieCarouselItem.swift; sourceTree = "<group>"; };
+		380F11BB2C667CB50027A33E /* MMCarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMCarouselItem.swift; sourceTree = "<group>"; };
+		38BD52072C67574A00BDD85B /* IntermediateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntermediateViewController.swift; sourceTree = "<group>"; };
 		5E1E353C2C623996000D7DEF /* UIViewController+AddChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AddChild.swift"; sourceTree = "<group>"; };
 		5E1E353E2C6247C5000D7DEF /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		5E1E35412C6248A6000D7DEF /* CarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselItem.swift; sourceTree = "<group>"; };
@@ -56,6 +67,7 @@
 		5E1E35492C624BAB000D7DEF /* ATrainCarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATrainCarouselItem.swift; sourceTree = "<group>"; };
 		5E1E354E2C624C2A000D7DEF /* CarouselItemDataSourceProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselItemDataSourceProviderType.swift; sourceTree = "<group>"; };
 		5E1E35502C624C4D000D7DEF /* CarouselItemDataSourceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselItemDataSourceProvider.swift; sourceTree = "<group>"; };
+		5E1E35562C634D75000D7DEF /* SegmentedProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedProgressBar.swift; sourceTree = "<group>"; };
 		5E87DC6A2C6232430005D86C /* Vought Showcase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vought Showcase.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E87DC6D2C6232430005D86C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E87DC6F2C6232430005D86C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +135,10 @@
 				5E1E35452C624AB9000D7DEF /* MaeveCarouselItem.swift */,
 				5E1E35472C624B31000D7DEF /* BlackNoirCarouselItem.swift */,
 				5E1E35492C624BAB000D7DEF /* ATrainCarouselItem.swift */,
+				380F11B52C667C710027A33E /* ButcherCarouselItem.swift */,
+				380F11B72C667C890027A33E /* HughieCarouselItem.swift */,
+				380F11B92C667CA10027A33E /* FrenchieCarouselItem.swift */,
+				380F11BB2C667CB50027A33E /* MMCarouselItem.swift */,
 			);
 			path = CarouselItems;
 			sourceTree = "<group>";
@@ -142,6 +158,14 @@
 				5E1E35502C624C4D000D7DEF /* CarouselItemDataSourceProvider.swift */,
 			);
 			path = CarouselItemProvider;
+			sourceTree = "<group>";
+		};
+		5E1E35552C634D55000D7DEF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5E1E35562C634D75000D7DEF /* SegmentedProgressBar.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		5E87DC612C6232430005D86C = {
@@ -167,6 +191,7 @@
 		5E87DC6C2C6232430005D86C /* Vought Showcase */ = {
 			isa = PBXGroup;
 			children = (
+				5E1E35552C634D55000D7DEF /* Views */,
 				5E1E35402C62489C000D7DEF /* Carousel */,
 				5E1E353B2C623954000D7DEF /* Utilities */,
 				5E87DC9D2C6232DC0005D86C /* Controllers */,
@@ -204,6 +229,7 @@
 				5E87DC712C6232430005D86C /* MainViewController.swift */,
 				5E87DC732C6232430005D86C /* Main.storyboard */,
 				5E1E353E2C6247C5000D7DEF /* ImageViewController.swift */,
+				38BD52072C67574A00BDD85B /* IntermediateViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -350,9 +376,15 @@
 				5E1E354F2C624C2A000D7DEF /* CarouselItemDataSourceProviderType.swift in Sources */,
 				5E1E353D2C623996000D7DEF /* UIViewController+AddChild.swift in Sources */,
 				5E1E35512C624C4D000D7DEF /* CarouselItemDataSourceProvider.swift in Sources */,
+				380F11B82C667C890027A33E /* HughieCarouselItem.swift in Sources */,
 				5E1E35422C6248A6000D7DEF /* CarouselItem.swift in Sources */,
+				38BD52082C67574A00BDD85B /* IntermediateViewController.swift in Sources */,
+				380F11B62C667C710027A33E /* ButcherCarouselItem.swift in Sources */,
 				5E1E353F2C6247C5000D7DEF /* ImageViewController.swift in Sources */,
+				380F11BA2C667CA10027A33E /* FrenchieCarouselItem.swift in Sources */,
 				5E87DC702C6232430005D86C /* SceneDelegate.swift in Sources */,
+				380F11BC2C667CB50027A33E /* MMCarouselItem.swift in Sources */,
+				5E1E35572C634D75000D7DEF /* SegmentedProgressBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

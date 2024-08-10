@@ -19,19 +19,18 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="Wdt-ua-dbL" userLabel="containerView">
+                <view contentMode="scaleToFill" verticalHuggingPriority="249" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wdt-ua-dbL" userLabel="containerView">
                     <rect key="frame" x="0.0" y="55.666666666666686" width="393" height="740.66666666666652"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="b6d-dM-0f0">
-                    <rect key="frame" x="0.0" y="792.33333333333337" width="393" height="25.666666666666629"/>
+                <pageControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="b6d-dM-0f0">
+                    <rect key="frame" x="0.0" y="792.33333333333348" width="393" height="25.666666666666629"/>
                 </pageControl>
             </subviews>
             <viewLayoutGuide key="safeArea" id="2Hc-cG-HM8"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Wdt-ua-dbL" firstAttribute="centerY" secondItem="5XN-sE-Tx1" secondAttribute="centerY" id="MT8-AA-59z"/>
-                <constraint firstItem="2Hc-cG-HM8" firstAttribute="bottom" secondItem="b6d-dM-0f0" secondAttribute="bottom" id="Oxp-yg-jtw"/>
                 <constraint firstItem="Wdt-ua-dbL" firstAttribute="bottom" secondItem="b6d-dM-0f0" secondAttribute="top" constant="4" id="TbU-ju-fiV"/>
                 <constraint firstItem="Wdt-ua-dbL" firstAttribute="leading" secondItem="2Hc-cG-HM8" secondAttribute="leading" id="YaR-nC-vHc"/>
                 <constraint firstItem="Wdt-ua-dbL" firstAttribute="trailing" secondItem="2Hc-cG-HM8" secondAttribute="trailing" id="lR9-7d-BKu"/>
