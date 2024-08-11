@@ -15,7 +15,7 @@ extension UIViewController {
     ///  - viewController: Child view controller
     ///  - containerView: Container view
     func add(asChildViewController viewController: UIViewController,
-                    containerView: UIView) {
+             containerView: UIView) {
         addChild(viewController)
         containerView.addSubview(viewController.view)
         viewController.view.frame = containerView.bounds
@@ -24,4 +24,6 @@ extension UIViewController {
         viewController.didMove(toParent:
                                 self)
     }
+    
 }
+

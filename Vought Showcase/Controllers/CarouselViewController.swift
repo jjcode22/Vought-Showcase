@@ -21,6 +21,9 @@ final class CarouselViewController: UIViewController {
     /// Page view controller for carousel
     private var pageViewController: UIPageViewController?
     
+    //SegmentedProgressBar
+    private var progressBar = SegmentedProgressBar(numberOfSegments: 4)
+    
     /// Carousel items
     private var items: [CarouselItem] = []
     
@@ -48,6 +51,45 @@ final class CarouselViewController: UIViewController {
         super.viewDidLoad()
         initPageViewController()
         initCarouselControl()
+        configureContainerView()
+        initProgressBar()
+        progressBar.startAnimation()
+        removeSwipeGesture()
+        addSwipeDownGesture()
+        navigationController?.navigationBar.isHidden = true
+        print("DEBUG: subviews are \(containerView.subviews)")
+    }
+    
+    /// initalize container view
+    private func configureContainerView(){
+        containerView.backgroundColor = .black
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        NSLayoutConstraint.activate([
+            containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            containerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
+            containerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+            
+        ])
+        
+        //tap gesture recognizers for left and right corners
+        let leftTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleLeftTap))
+        let rightTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleRightTap))
+        
+        // Setting the tap areas
+        let tapAreaWidth: CGFloat = 80 // I have set the tap are as 80 from each sides.
+        
+        let leftTapArea = UIView(frame: CGRect(x: 0, y: 0, width: tapAreaWidth, height: containerView.bounds.height))
+        leftTapArea.backgroundColor = .clear
+        containerView.addSubview(leftTapArea)
+        leftTapArea.addGestureRecognizer(leftTapGesture)
+        
+        let rightTapArea = UIView(frame: CGRect(x: containerView.bounds.width - tapAreaWidth, y: 0, width: tapAreaWidth, height: containerView.bounds.height))
+        rightTapArea.backgroundColor = .clear
+        containerView.addSubview(rightTapArea)
+        rightTapArea.addGestureRecognizer(rightTapGesture)
     }
     
     
@@ -71,6 +113,34 @@ final class CarouselViewController: UIViewController {
         // Add pageViewController in container view
         add(asChildViewController: theController,
             containerView: containerView)
+        
+        //configure pageViewController constraints
+        containerView.addSubview(theController.view)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        theController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            theController.view.topAnchor.constraint(equalTo: containerView.topAnchor),
+            theController.view.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor),
+            theController.view.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor),
+            theController
+                .view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            containerView.topAnchor.constraint(equalTo: view.topAnchor),
+            containerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            
+        ])
+        
+    }
+    
+    func removeSwipeGesture(){
+        //removing swipe gesture from each of the subviews in the pageViewController
+        for view in self.pageViewController!.view.subviews {
+            if let subView = view as? UIScrollView {
+                subView.isScrollEnabled = false
+            }
+        }
     }
 
     /// Initialize carousel control
@@ -89,6 +159,25 @@ final class CarouselViewController: UIViewController {
                     action: #selector(updateCurrentPage(sender:)),
                     for: .valueChanged)
     }
+    
+    
+    private func initProgressBar() {
+        progressBar.delegate = self
+        containerView.addSubview(progressBar)
+        
+        progressBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            progressBar.topAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.topAnchor),
+            progressBar.leadingAnchor.constraint(equalTo: containerView.leadingAnchor,constant: 6),
+            progressBar.trailingAnchor.constraint(equalTo: containerView.trailingAnchor,constant: 6),
+            progressBar.heightAnchor.constraint(equalToConstant: 8)
+        ])
+        
+        // Force the view to update its layout immediately
+        progressBar.layoutIfNeeded()
+    }
+
 
     /// Update current page
     /// Parameter sender: UIPageControl
@@ -111,6 +200,29 @@ final class CarouselViewController: UIViewController {
     /// - Returns: UIViewController
     private func getController(at index: Int) -> UIViewController {
         return items[index].getController()
+    }
+    
+    /// Add swipe down gesture recognizer
+    private func addSwipeDownGesture() {
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeDown(_:)))
+        swipeDown.direction = .down
+        view.addGestureRecognizer(swipeDown)
+    }
+    
+    @objc private func handleSwipeDown(_ gesture: UISwipeGestureRecognizer) {
+        dismissCVC()
+    }
+    
+    @objc private func handleLeftTap() {
+        // Navigate to the previous story
+//        let newIndex = currentItemIndex > 0 ? currentItemIndex - 1 : items.count - 1
+        progressBar.rewind()
+    }
+
+    @objc private func handleRightTap() {
+        // Navigate to the next story
+//        let newIndex = currentItemIndex + 1 < items.count ? currentItemIndex + 1 : 0
+        progressBar.skip()
     }
 
 }
@@ -175,4 +287,31 @@ extension CarouselViewController: UIPageViewControllerDelegate {
                 currentItemIndex = index
             }
         }
+}
+
+// MARK: -  SegmentedProgressBarDelegate
+extension CarouselViewController: SegmentedProgressBarDelegate{
+    func segmentedProgressBarChangedIndex(index: Int) {
+        // Update the page view controller to the new index
+        let direction: UIPageViewController.NavigationDirection = index > currentItemIndex ? .forward : .reverse
+        let controller = getController(at: index)
+        pageViewController?.setViewControllers([controller], direction: direction, animated: true, completion: nil)
+        currentItemIndex = index
+    }
+    
+    func segmentedProgressBarFinished() {
+        //dimiss CarouselViewController when all members have finished showing up from topdown animation for Pop
+        dismissCVC()
+    }
+    
+    func dismissCVC() {
+        //custom animation for popping the controller from top to down.
+        let transition = CATransition()
+        transition.duration = 0.4 // Duration of the animation
+        transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        transition.type = .reveal
+        transition.subtype = .fromBottom
+        navigationController?.view.layer.add(transition, forKey: kCATransition)
+        navigationController?.popViewController(animated: false)
+    }
 }
