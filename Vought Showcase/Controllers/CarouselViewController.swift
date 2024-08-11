@@ -55,8 +55,9 @@ final class CarouselViewController: UIViewController {
         initProgressBar()
         progressBar.startAnimation()
         removeSwipeGesture()
+        addSwipeDownGesture()
         navigationController?.navigationBar.isHidden = true
-        print(containerView.subviews)
+        print("DEBUG: subviews are \(containerView.subviews)")
     }
     
     /// initalize container view
@@ -113,6 +114,24 @@ final class CarouselViewController: UIViewController {
         add(asChildViewController: theController,
             containerView: containerView)
         
+        //configure pageViewController constraints
+        containerView.addSubview(theController.view)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        theController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            theController.view.topAnchor.constraint(equalTo: containerView.topAnchor),
+            theController.view.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor),
+            theController.view.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor),
+            theController
+                .view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            containerView.topAnchor.constraint(equalTo: view.topAnchor),
+            containerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            
+        ])
+        
     }
     
     func removeSwipeGesture(){
@@ -141,19 +160,6 @@ final class CarouselViewController: UIViewController {
                     for: .valueChanged)
     }
     
-    ///initalize progressBar
-//    private func initProgressBar() {
-//        progressBar.delegate = self
-//        containerView.addSubview(progressBar)
-//        progressBar.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            progressBar.topAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.topAnchor, constant: 0),
-//            progressBar.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 0),
-//            progressBar.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0),
-//            progressBar.heightAnchor.constraint(equalToConstant: 8)
-//
-//        ])
-//    }
     
     private func initProgressBar() {
         progressBar.delegate = self
@@ -196,15 +202,26 @@ final class CarouselViewController: UIViewController {
         return items[index].getController()
     }
     
+    /// Add swipe down gesture recognizer
+    private func addSwipeDownGesture() {
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeDown(_:)))
+        swipeDown.direction = .down
+        view.addGestureRecognizer(swipeDown)
+    }
+    
+    @objc private func handleSwipeDown(_ gesture: UISwipeGestureRecognizer) {
+        dismissCVC()
+    }
+    
     @objc private func handleLeftTap() {
         // Navigate to the previous story
-        let newIndex = currentItemIndex > 0 ? currentItemIndex - 1 : items.count - 1
+//        let newIndex = currentItemIndex > 0 ? currentItemIndex - 1 : items.count - 1
         progressBar.rewind()
     }
 
     @objc private func handleRightTap() {
         // Navigate to the next story
-        let newIndex = currentItemIndex + 1 < items.count ? currentItemIndex + 1 : 0
+//        let newIndex = currentItemIndex + 1 < items.count ? currentItemIndex + 1 : 0
         progressBar.skip()
     }
 
@@ -297,7 +314,4 @@ extension CarouselViewController: SegmentedProgressBarDelegate{
         navigationController?.view.layer.add(transition, forKey: kCATransition)
         navigationController?.popViewController(animated: false)
     }
-
-    
-    
 }

@@ -24,20 +24,22 @@ class IntermediateViewController: UIViewController {
         configureButton()
     }
     
-    private func configureButton(){
+    private func configureButton() {
         view.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        button.setTitle("View Story", for: .normal)
-        button.setImage(UIImage(systemName: "eye.fill"), for: .normal)
-        button.tintColor = .white
-        button.titleLabel?.font = .boldSystemFont(ofSize: 18)
-        button.backgroundColor = .systemPurple
-        button.layer.cornerRadius = 10
+        // button configuration
+        var config = UIButton.Configuration.filled()
+        config.title = "View Story"
+        config.image = UIImage(systemName: "eye.fill")
+        config.imagePadding = 8
+        config.imagePlacement = .leading
+        config.baseBackgroundColor = .systemPurple
+        config.baseForegroundColor = .white
+        config.cornerStyle = .medium
+        config.attributedTitle = AttributedString("View Story", attributes: AttributeContainer([.font: UIFont.boldSystemFont(ofSize: 18)]))
         
-        let padding: CGFloat = 4.0
-            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -padding, bottom: 0, right: padding)
-            button.titleEdgeInsets = UIEdgeInsets(top: 0, left: padding, bottom: 0, right: -padding)
+        button.configuration = config
         
         button.addTarget(self, action: #selector(viewStoryClicked), for: .touchUpInside)
         
@@ -46,20 +48,21 @@ class IntermediateViewController: UIViewController {
             button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             button.heightAnchor.constraint(equalToConstant: 50)
-            
         ])
     }
+
+
     
     private func configureLabel(){
         view.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Vought Showcase"
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 20, weight: .semibold)
+        label.font = .systemFont(ofSize: 32, weight: .bold)
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            label.widthAnchor.constraint(equalToConstant: 200),
+            label.widthAnchor.constraint(equalToConstant: 320),
             label.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
@@ -72,8 +75,6 @@ class IntermediateViewController: UIViewController {
         let carouselViewController = CarouselViewController(items: carouselItemProvider.items())
         
         pushCVC(viewController: carouselViewController)
-        
-//        navigationController?.pushViewController(carouselViewController, animated: true)
     }
     
     func pushCVC(viewController: UIViewController) {
@@ -85,10 +86,4 @@ class IntermediateViewController: UIViewController {
         navigationController?.view.layer.add(transition, forKey: kCATransition)
         navigationController?.pushViewController(viewController, animated: false)
     }
-
-    
-    
-
-    
-
 }

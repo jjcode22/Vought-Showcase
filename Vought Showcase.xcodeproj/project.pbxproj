@@ -110,6 +110,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3852C8F32C68D2A800B8D9EB /* The Seven */ = {
+			isa = PBXGroup;
+			children = (
+				5E1E35432C62497D000D7DEF /* HomeLanderCarouselItem.swift */,
+				5E1E35452C624AB9000D7DEF /* MaeveCarouselItem.swift */,
+				5E1E35472C624B31000D7DEF /* BlackNoirCarouselItem.swift */,
+				5E1E35492C624BAB000D7DEF /* ATrainCarouselItem.swift */,
+			);
+			path = "The Seven";
+			sourceTree = "<group>";
+		};
+		3852C8F42C68D2B100B8D9EB /* The Boys */ = {
+			isa = PBXGroup;
+			children = (
+				380F11B52C667C710027A33E /* ButcherCarouselItem.swift */,
+				380F11B72C667C890027A33E /* HughieCarouselItem.swift */,
+				380F11B92C667CA10027A33E /* FrenchieCarouselItem.swift */,
+				380F11BB2C667CB50027A33E /* MMCarouselItem.swift */,
+			);
+			path = "The Boys";
+			sourceTree = "<group>";
+		};
 		5E1E353B2C623954000D7DEF /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,14 +153,8 @@
 		5E1E354B2C624BF4000D7DEF /* CarouselItems */ = {
 			isa = PBXGroup;
 			children = (
-				5E1E35432C62497D000D7DEF /* HomeLanderCarouselItem.swift */,
-				5E1E35452C624AB9000D7DEF /* MaeveCarouselItem.swift */,
-				5E1E35472C624B31000D7DEF /* BlackNoirCarouselItem.swift */,
-				5E1E35492C624BAB000D7DEF /* ATrainCarouselItem.swift */,
-				380F11B52C667C710027A33E /* ButcherCarouselItem.swift */,
-				380F11B72C667C890027A33E /* HughieCarouselItem.swift */,
-				380F11B92C667CA10027A33E /* FrenchieCarouselItem.swift */,
-				380F11BB2C667CB50027A33E /* MMCarouselItem.swift */,
+				3852C8F42C68D2B100B8D9EB /* The Boys */,
+				3852C8F32C68D2A800B8D9EB /* The Seven */,
 			);
 			path = CarouselItems;
 			sourceTree = "<group>";

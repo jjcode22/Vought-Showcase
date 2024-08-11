@@ -13,26 +13,30 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-//        initCarouselView()
         initIntermediateViewController()
     }
     
     private func initIntermediateViewController(){
-        
         let controller = IntermediateViewController()
         add(asChildViewController: controller, containerView: containerView)
+        
+        //configure intermediate view controller constraints
+        containerView.addSubview(controller.view)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        controller.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            controller.view.topAnchor.constraint(equalTo: containerView.topAnchor),
+            controller.view.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor),
+            controller.view.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor),
+            controller.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            containerView.topAnchor.constraint(equalTo: view.topAnchor),
+            containerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            
+        ])
     }
-    
-//    private func initCarouselView() {
-//        // Create a carousel item provider
-//        let carouselItemProvider = CarouselItemDataSourceProvider()
-//        
-//        // Create carouselViewController
-//        let carouselViewController = CarouselViewController(items: carouselItemProvider.items())
-//        
-//        // Add carousel view controller in container view
-//        add(asChildViewController: carouselViewController, containerView: containerView)
-//    }
     
 }
 
